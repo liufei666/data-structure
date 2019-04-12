@@ -5,18 +5,19 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
  * Created by liufei on 2019-04-11.
  */
-public class FixArrayListTest {
+public class MyFixArrayListTest {
 
-    private FixArrayList<Integer> arrayList = new FixArrayList<>();
+    private MyArrayList<Integer> arrayList = new MyArrayList<>();
 
     @Before
     public void initListTest() {
-        ArrayList<Integer> tmp = new ArrayList<>();
+        List<Integer> tmp = new ArrayList<>();
         Random random = new Random();
         for (int i = 0; i < 20; i++) {
             tmp.add(random.nextInt(20));

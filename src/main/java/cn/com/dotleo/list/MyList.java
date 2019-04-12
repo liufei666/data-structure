@@ -1,7 +1,6 @@
 package cn.com.dotleo.list;
 
-import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 
 /**
  * 线性表(List)：零个或者多个数据元素的有限集合
@@ -11,14 +10,14 @@ import java.util.Collection;
  *     ai+1为ai的直接后继
  *
  * 线性表元素的个数n(n>=0)定义为线性表的长度，当n=0时，称为空表
- * 数据元素之间一对一的关系
+ * 线性表数据元素之间一对一的关系
  */
-public interface List<E> {
+public interface MyList<E> {
 
     // Data Field
 
     /**
-     * 线性表中的数据结合{a1,a2,...,an},每个元素的类型均为DataType。
+     * 线性表中的数据结合{a1,a2,...,an},每个元素的类型均为E。
      */
 
     // Method Field
@@ -27,7 +26,7 @@ public interface List<E> {
      * 写入(初始化)线性表
      * @param datas
      */
-    void initList(ArrayList<E> datas);
+    void initList(List<E> datas);
 
     /**
      * 读取线性表
@@ -73,28 +72,5 @@ public interface List<E> {
      * @return
      */
     boolean listEmpty();
-
-    // Algorithm Field
-
-    /**
-     * 寻找数组中第二小的元素
-     *
-     */
-
-    /**
-     * 找到数组中第一个不重复出现的整数
-     */
-
-    /**
-     * 合并两个有序数组
-     */
-
-    /**
-     * 重新排列数组中的正值和负值
-     */
-
-
-
-
 
 }

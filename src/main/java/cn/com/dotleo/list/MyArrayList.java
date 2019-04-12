@@ -1,12 +1,16 @@
 package cn.com.dotleo.list;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 线性表的顺序存储(数组): 指用一段连续的存储单元依次存储线性表的数据元素
  *
+ * 易错点：
+ * 1. 新增删除元素时的两个条件判断
+ * 2. 新增删除元素时的移动起止位置
+ *
  */
-public class FixArrayList<E> implements List<E> {
+public class MyArrayList<E> implements MyList<E> {
 
     // Data Field
 
@@ -14,14 +18,14 @@ public class FixArrayList<E> implements List<E> {
     private Object[] elements;
     private int length;
 
-    public FixArrayList() {
+    public MyArrayList() {
         elements = new Object[defaultCapacity];
         length = 0;
     }
 
     // Method Field
 
-    public void initList(ArrayList<E> datas) {
+    public void initList(List<E> datas) {
         clearList();
         if (datas == null || datas.isEmpty()) {
             return;
@@ -42,6 +46,16 @@ public class FixArrayList<E> implements List<E> {
         return (E) elements[index];
     }
 
+    /**
+     * 条件判断:
+     * 1. 是否还能添加
+     * 2. 索引是否非法
+     *
+     * 逻辑:
+     * 1. 如果不是末尾，需要将元素后移(从最后一个位置的后一位开始，到要添加位置的后一位止,将前一位的元素到后一位)
+     * 2. 赋值
+     * 3. 长度加一
+     */
     public void listInsert(int index, E data) {
         if (length == defaultCapacity) {
             throw new IllegalStateException("list is over");
@@ -50,8 +64,7 @@ public class FixArrayList<E> implements List<E> {
             throw new IllegalArgumentException("index is Illegal");
         }
         if (index < length - 1) {
-            int localIndex = localElem(data);
-            for (int i = length - 1; i > localIndex; i--) {
+            for (int i = length; i > index; i--) {
                 elements[i] = elements[i - 1];
             }
         }
@@ -59,6 +72,15 @@ public class FixArrayList<E> implements List<E> {
         length++;
     }
 
+    /**
+     * 条件判断：
+     * 1. 是否还能删除
+     * 2. 索引是否非法
+     *
+     * 逻辑：
+     * 1. 元素前移(从要删除的位置开始，到最后一位的前一位止，将后一位的元素放到前一位)
+     * 2. 长度减1
+     */
     public E listDelete(int index) {
         if (length == 0) {
             throw new IllegalStateException("list is over");
@@ -96,4 +118,23 @@ public class FixArrayList<E> implements List<E> {
     public boolean listEmpty() {
         return length == 0;
     }
+
+    // Algorithm Field
+
+    /**
+     * 寻找数组中第二小的元素
+     *
+     */
+
+    /**
+     * 找到数组中第一个不重复出现的整数
+     */
+
+    /**
+     * 合并两个有序数组
+     */
+
+    /**
+     * 重新排列数组中的正值和负值
+     */
 }
